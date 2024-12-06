@@ -7,7 +7,7 @@ load_dotenv()
 import os 
 
 app = Flask(__name__)
-cors = CORS(app, origins='*')
+CORS(app, origins='*')
 
 app.register_blueprint(user_location)
 
