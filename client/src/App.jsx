@@ -6,12 +6,16 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  // Get user location upon browser load and send to server
   useEffect(() => {
     if ("geolocation" in navigator){
     navigator.geolocation.getCurrentPosition((position) => {
       const userLatitude = position.coords.latitude
       const userLongitude = position.coords.longitude
       console.log(userLatitude, userLongitude)
+      axios.post('http://127.0.0.1:8080/user_location', {
+        userLatitude, userLongitude
+      })
     })
   }
   }, [])
